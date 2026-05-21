@@ -14,6 +14,15 @@
     }
 }
 
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-15px)}
+}
+
 header h3 {
     animation: fadeUp 0.7s ease-in-out forwards;
     opacity: 0;
@@ -25,13 +34,14 @@ header h3 {
     animation-delay: 0.3s;
 }
 
-img, .about-me-img {
-    animation: fadeUp 0.7s ease-in-out forwards;
+.about-me-img {
+    animation: fadeUp 0.7s ease-in-out forwards, float 3s ease-in-out infinite alternate;
+    animation-delay: 0.2s, 1.2s;
     opacity: 0;
-    animation-delay: 0.2s;
+    
 }
 
-p {
+p:not(.copyright) {
     animation: fadeUp 0.7s ease-in-out forwards;
     opacity: 0;
     animation-delay: 0.2s;
@@ -65,10 +75,15 @@ p {
 
 header h3 {
     color: var(--text);
+    background: var(--secondary);
+    margin: 0 30px 30px;
     text-align: center;
     font-family: 'Caveat', cursive;
     font-size: 28px;
     font-weight: 700;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 5px 0;
 }
 
 .hero {
@@ -94,7 +109,9 @@ header h3 {
     justify-content: flex-end; 
     border: solid 2px var(--secondary);
     border-radius: 40px;
-    box-shadow: 0px 0px 4px 0px var(--text), 0px 0px 56px -2px var(--primary)
+    box-shadow: 0px 0px 4px 0px var(--text), 0px 0px 56px -2px var(--primary);
+    overflow: hidden;
+    background-color: #000;
 }
 
 .about-me-img img {
@@ -120,6 +137,7 @@ header h3 {
     background-color: var(--secondary);
     border: solid 1px var(--primary);
     border-radius: 10px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; 
 }
 
 .skill-card {
@@ -130,6 +148,12 @@ header h3 {
     padding: 10px 50px;
     min-height: 150px;
     gap: 20px;
+}
+
+.skill-cards:hover {
+    transform: perspective(1000px) translateY(-5px) rotateX(10deg) rotateY(5deg);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3), 0px 0px 20px var(--primary);
+    cursor: pointer;
 }
 
 .bobbles {
@@ -168,5 +192,98 @@ header h3 {
         align-self: center;
         margin-top: 50px;   
     }
+}
+
+.projects > :not(:first-child)  {
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    height: 100%;
+}
+
+.project-card img {
+    width: 100%;
+    margin-top: 8px;
+    filter: blur(6px);
+    transition: all 0.7s ease-in-out;
+}
+
+.project-card img:hover {
+    filter: none;
+}
+
+.project-card {
+    background-color: var(--secondary);
+    padding: 2px;
+    border: solid 1px var(--primary);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    transition: all 0.7s ease-in-out;
+}
+
+.project-card:hover {
+    transform: perspective(1000px) translateZ(50px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3), 0px 0px 20px var(--primary);
+    cursor: pointer;
+}
+
+
+.footer-container {
+    padding: 0 20px;
+    font-size: 18px;
+    display: flex;
+    direction: rtl;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--background);
+    border: solid 1px var(--primary);
+    border-radius: 45%;
+    padding: 5px;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0.3s ease-in-out;
+}
+
+.social-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.social-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0px 0px 15px var(--primary);
+}
+
+.social-buttons a {
+    color: var(--primary);
+    width: 20px;
+    height: 20px;
 }
 
